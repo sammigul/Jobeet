@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites failures="2" errors="0" tests="13" assertions="13" skipped="0">
+  <testsuite name="categoryActionsTest" file="D:\Development\sfprojects\jobeet\test\functional\frontend\categoryActionsTest.php" failures="1" errors="0" skipped="0" tests="1" assertions="1"/>
+  <testsuite name="jobActionsTest" file="D:\Development\sfprojects\jobeet\test\functional\frontend\jobActionsTest.php" failures="1" errors="0" skipped="0" tests="1" assertions="1"/>
+  <testsuite name="JobeetTest" file="D:\Development\sfprojects\jobeet\test\unit\JobeetTest.php" failures="0" errors="0" skipped="0" tests="8" assertions="8">
+    <testcase name="::sluggify() converts all chars to lowercase" file="D:\Development\sfprojects\jobeet\test\unit\JobeetTest.php" line="8" assertions="1"/>
+    <testcase name="::sluggify replaces whitespace by -" file="D:\Development\sfprojects\jobeet\test\unit\JobeetTest.php" line="9" assertions="1"/>
+    <testcase name="" file="D:\Development\sfprojects\jobeet\test\unit\JobeetTest.php" line="10" assertions="1"/>
+    <testcase name="" file="D:\Development\sfprojects\jobeet\test\unit\JobeetTest.php" line="11" assertions="1"/>
+    <testcase name="" file="D:\Development\sfprojects\jobeet\test\unit\JobeetTest.php" line="12" assertions="1"/>
+    <testcase name="" file="D:\Development\sfprojects\jobeet\test\unit\JobeetTest.php" line="13" assertions="1"/>
+    <testcase name="::sluggify() converts the empty string to n-a" file="D:\Development\sfprojects\jobeet\test\unit\JobeetTest.php" line="14" assertions="1"/>
+    <testcase name="::slugify() converts a string that only contains non-ASCII characters to n-a" file="D:\Development\sfprojects\jobeet\test\unit\JobeetTest.php" line="15" assertions="1"/>
+  </testsuite>
+  <testsuite name="JobeetJobTest" file="D:\Development\sfprojects\jobeet\test\unit\model\JobeetJobTest.php" failures="0" errors="0" skipped="0" tests="3" assertions="3">
+    <testcase name="-&gt;getCompanySlug() return the slug for the company" file="D:\Development\sfprojects\jobeet\test\unit\model\JobeetJobTest.php" line="8" assertions="1"/>
+    <testcase name="-&gt;save() updates expires_at if not set" file="D:\Development\sfprojects\jobeet\test\unit\model\JobeetJobTest.php" line="14" assertions="1"/>
+    <testcase name="-&gt;save() does not update expires_at if set" file="D:\Development\sfprojects\jobeet\test\unit\model\JobeetJobTest.php" line="18" assertions="1"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,50 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+# as we have added :slug as a route param. bcz there is no corresponding col in the category table for slug, we have to add a virtual accessor in JobeetCategory class to make the route work
+affiliate:
+  class: sfDoctrineRouteCollection
+  options:
+    model:          JobeetAffiliate
+    actions:        [new, create]
+    object_actions: { wait: get }
+    prefix_path:    /:sf_culture/affiliate
+ 
+category:
+  url:     /:sf_culture/category/:slug.:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: category, action: show, sf_format: html }
+  options: { model: JobeetCategory, type: object }
+  requirements:
+    sf_format: (?:html|atom)
+ 
+job_search:
+  url:   /:sf_culture/search
+  param: { module: job, action: search }
+ 
+job:
+  class: sfDoctrineRouteCollection
+  options:
+    model:          JobeetJob
+    column:         token
+    object_actions: { publish: put, extend: put }
+    prefix_path:    /:sf_culture/job
+  requirements:
+    token: \w+
+ 
+job_show_user:
+  url:     /:sf_culture/job/:company_slug/:location_slug/:id/:position_slug
+  class:   sfDoctrineRoute
+  options:
+    model: JobeetJob
+    type: object
+    method_for_query: retrieveActiveJob
+  param:   { module: job, action: show }
+  requirements:
+    id:        \d+
+    sf_method: get
+
+localized_homepage:
+  url:   /:sf_culture/
+  param: { module: job, action: index }
+  requirements:
+    sf_culture: (?:fr|en)
