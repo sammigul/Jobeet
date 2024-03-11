@@ -26,7 +26,8 @@ class ProjectConfiguration extends sfProjectConfiguration
     $this->enablePlugins(array(
       'sfDoctrinePlugin',
       'sfDoctrineGuardPlugin',
-      'sfFormExtraPlugin'
+      'sfFormExtraPlugin',
+      'sfJobeetPlugin'
     ));
 
     // sfFormExtraPlugin is located at lib/vendor/symfony/lib/plugins/sfFormExtraPlugin 

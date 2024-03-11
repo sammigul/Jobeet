@@ -70,3 +70,10 @@ change_language:
   url:   /change_language
   param: { module: language, action: changeLanguage }
 
+api_jobs:
+  url:     /api/:token/jobs.:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: api, action: list }
+  options: { model: JobeetJob, type: list, method: getForToken }
+  requirements:
+    sf_format: (?:xml|json|yaml)
