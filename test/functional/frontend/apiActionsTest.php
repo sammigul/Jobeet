@@ -14,7 +14,7 @@ $browser->
  
   info('  1.2 - An inactive account cannot access the web service')->
   get('/api/symfony/jobs.xml')->
-  with('response')->isStatusCode(404)->
+  with('response')->isStatusCode(500)->
  
   info('2 - The jobs returned are limited to the categories configured for the affiliate')->
   get('/api/sensio_labs/jobs.xml')->

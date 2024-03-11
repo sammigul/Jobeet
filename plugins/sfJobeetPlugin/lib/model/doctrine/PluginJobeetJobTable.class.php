@@ -75,7 +75,7 @@ abstract class PluginJobeetJobTable extends Doctrine_Table
   public function getForToken(array $parameters)
   {
     $affiliate = Doctrine_Core::getTable('JobeetAffiliate') ->findOneByToken($parameters['token']);
-    if (!$affiliate || !$affiliate->getIsActive())
+    if (!$affiliate || !$affiliate->getis_active())
     {
       throw new sfError404Exception(sprintf('Affiliate with token "%s" does not exist or is not activated.', $parameters['token']));
     }
