@@ -1,28 +1,26 @@
-# You can find more information about this file on the symfony website:
-# http://www.symfony-project.org/reference/1_4/en/10-Routing
-# as we have added :slug as a route param. bcz there is no corresponding col in the category table for slug, we have to add a virtual accessor in JobeetCategory class to make the route work
 affiliate:
-  class: sfDoctrineRouteCollection
+  class:   sfDoctrineRouteCollection
   options:
     model:          JobeetAffiliate
     actions:        [new, create]
-    object_actions: { wait: get }
+    object_actions: { wait: GET }
     prefix_path:    /:sf_culture/affiliate
-
-affiliate_wait:
-  url:   /:sf_culture/affiliate/wait
-  class: sfDoctrineRoute
-  options:
-    model: JobeetAffiliate
-    type: object
-
-    
-  param: { module: affiliate ,action: wait }
-
+    module:         sfJobeetAffiliate
+  requirements:
+    sf_culture: (?:fr|en)
+ 
+api_jobs:
+  url:     /api/:token/jobs.:sf_format
+  class:   sfDoctrineRoute
+  param:   { module: sfJobeetApi, action: list }
+  options: { model: JobeetJob, type: list, method: getForToken }
+  requirements:
+    sf_format: (?:xml|json|yaml)
+ 
 category:
   url:     /:sf_culture/category/:slug.:sf_format
   class:   sfDoctrineRoute
-  param:   { module: category, action: show, sf_format: html }
+  param:   { module: sfJobeetCategory, action: show, sf_format: html }
   options: { model: JobeetCategory, type: object, method: doSelectForSlug }
   requirements:
     sf_format: (?:html|atom)
@@ -30,15 +28,18 @@ category:
  
 job_search:
   url:   /:sf_culture/search
-  param: { module: job, action: search }
+  param: { module: sfJobeetJob, action: search }
+  requirements:
+    sf_culture: (?:fr|en)
  
 job:
-  class: sfDoctrineRouteCollection
+  class:   sfDoctrineRouteCollection
   options:
     model:          JobeetJob
     column:         token
-    object_actions: { publish: put, extend: put }
+    object_actions: { publish: PUT, extend: PUT }
     prefix_path:    /:sf_culture/job
+    module:         sfJobeetJob
   requirements:
     token: \w+
     sf_culture: (?:fr|en)
@@ -50,30 +51,22 @@ job_show_user:
     model: JobeetJob
     type: object
     method_for_query: retrieveActiveJob
-  param:   { module: job, action: show }
+  param:   { module: sfJobeetJob, action: show }
   requirements:
     id:        \d+
-    sf_method: get
+    sf_method: GET
     sf_culture: (?:fr|en)
-
-localized_homepage:
-  url:   /:sf_culture/
-  param: { module: job, action: index }
-  requirements:
-    sf_culture: (?:fr|en)
-
-homepage:
-  url:   /
-  param: { module: job, action: index }
-
+ 
 change_language:
   url:   /change_language
-  param: { module: language, action: changeLanguage }
-
-api_jobs:
-  url:     /api/:token/jobs.:sf_format
-  class:   sfDoctrineRoute
-  param:   { module: api, action: list }
-  options: { model: JobeetJob, type: list, method: getForToken }
+  param: { module: sfJobeetLanguage, action: changeLanguage }
+ 
+localized_homepage:
+  url:   /:sf_culture/
+  param: { module: sfJobeetJob, action: index }
   requirements:
-    sf_format: (?:xml|json|yaml)
+    sf_culture: (?:fr|en)
+ 
+homepage:
+  url:   /
+  param: { module: sfJobeetJob, action: index }
