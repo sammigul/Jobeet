@@ -8,7 +8,17 @@ affiliate:
     actions:        [new, create]
     object_actions: { wait: get }
     prefix_path:    /:sf_culture/affiliate
- 
+
+affiliate_wait:
+  url:   /:sf_culture/affiliate/wait
+  class: sfDoctrineRoute
+  options:
+    model: JobeetAffiliate
+    type: object
+
+    
+  param: { module: affiliate ,action: wait }
+
 category:
   url:     /:sf_culture/category/:slug.:sf_format
   class:   sfDoctrineRoute
