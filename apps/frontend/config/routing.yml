@@ -16,6 +16,7 @@ category:
   options: { model: JobeetCategory, type: object }
   requirements:
     sf_format: (?:html|atom)
+    sf_culture: (?:fr|en)
  
 job_search:
   url:   /:sf_culture/search
@@ -30,6 +31,7 @@ job:
     prefix_path:    /:sf_culture/job
   requirements:
     token: \w+
+    sf_culture: (?:fr|en)
  
 job_show_user:
   url:     /:sf_culture/job/:company_slug/:location_slug/:id/:position_slug
@@ -42,9 +44,15 @@ job_show_user:
   requirements:
     id:        \d+
     sf_method: get
+    sf_culture: (?:fr|en)
 
 localized_homepage:
   url:   /:sf_culture/
   param: { module: job, action: index }
   requirements:
     sf_culture: (?:fr|en)
+
+homepage:
+  url:   /
+  param: { module: job, action: index }
+
