@@ -88,9 +88,10 @@
             <li class="feed"><a href="<?php echo url_for('job', array('sf_format' => 'atom')) ?>">Full feed</a></li>
             <li><a href="">Jobeet API</a></li>
             <li class="last">
-  <a href="<?php echo url_for('affiliate_new') ?>">Become an affiliate</a>li>
+              <a href="<?php echo url_for('affiliate_new') ?>">Become an affiliate</a>li>
           </ul>
         </div>
+        <?php include_component('language','langauge') ?>
       </div>
     </div>
   </body>

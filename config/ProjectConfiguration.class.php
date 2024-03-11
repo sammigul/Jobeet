@@ -25,7 +25,8 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
     $this->enablePlugins(array(
       'sfDoctrinePlugin',
-      'sfDoctrineGuardPlugin'
+      'sfDoctrineGuardPlugin',
+      'sfFormExtraPlugin'
     ));
   }
 }
