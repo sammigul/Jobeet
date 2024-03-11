@@ -23,6 +23,7 @@ test:
     etag:                   false
 
 all:
+
   .settings:
     # Form security secret (CSRF protection)
     csrf_secret:            931e4d7bb8a7bd176dc112abc6d34ec8dba27375
@@ -45,3 +46,10 @@ all:
       - sfJobeetJob
       - sfJobeetApi
       - sfJobeetLanguage
+
+cache:
+  .settings:
+    error_reporting: <?php echo (E_ALL | E_STRICT)."\n" ?>
+    web_debug:       true
+    cache:           true
+    etag:            false
