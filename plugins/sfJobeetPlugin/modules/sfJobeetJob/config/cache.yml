@@ -1,3 +1,9 @@
+new:
+  enabled:     true
+ 
 index:
-  enabled:    true
-  with_layout: true
+  enabled:     true
+  lifetime:    600
+ 
+all:
+  with_layout: false
