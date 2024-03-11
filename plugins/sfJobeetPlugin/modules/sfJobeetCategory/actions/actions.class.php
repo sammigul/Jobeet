@@ -1,7 +1,7 @@
 <?php
 class categoryActions extends sfActions
 {
-  public function executeShow(sfWebRequest $request)
+  public function sfJobeetExecuteShow(sfWebRequest $request)
   {
     $this->category = $this->getRoute()->getObject();
    

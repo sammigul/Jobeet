@@ -8,7 +8,7 @@
  * @author     Abdul Sammi Gul
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
-class jobActions extends sfActions
+class sfJobeetJobActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
@@ -77,11 +77,11 @@ class jobActions extends sfActions
   public function executeDelete(sfWebRequest $request)
   {
     $request->checkCSRFProtection();
-   
-    $job = $this->getRoute()->getObject();
-    $job->delete();
-   
-    $this->redirect('job/index');
+ 
+    $jobeet_job = $this->getRoute()->getObject();
+    $jobeet_job->delete();
+ 
+    $this->redirect('sfJobeetJob/index');
   }
 
   public function executePublish(sfWebRequest $request)
@@ -126,18 +126,18 @@ class jobActions extends sfActions
   // Search
   public function executeSearch(sfWebRequest $request)
   {
-    $this->forwardUnless($query = $request->getParameter('query'), 'job', 'index');
-   
-    $this->jobs = Doctrine_Core::getTable('JobeetJob')->getForLuceneQuery($query);
-   
+    $this->forwardUnless($query = $request->getParameter('query'), 'sfJobeetJob', 'index');
+ 
+    $this->jobs = Doctrine_Core::getTable('JobeetJob') ->getForLuceneQuery($query);
+ 
     if ($request->isXmlHttpRequest())
     {
       if ('*' == $query || !$this->jobs)
       {
         return $this->renderText('No results.');
       }
-   
-      return $this->renderPartial('job/list', array('jobs' => $this->jobs));
+ 
+      return $this->renderPartial('sfJobeetJob/list', array('jobs' => $this->jobs));
     }
   }
   
