@@ -16,7 +16,7 @@ abstract class PluginJobeetJobForm extends BaseJobeetJobForm
   public function configure()
   {
     $this->removeFields();
-
+    $this->disableLocalCSRFProtection();
 
     //$this->validatorSchema['email'] = new sfValidatorEmail(); // not encouraged as replacing default validator because default validation rules introspected from the databas schema are lost
 
