@@ -96,8 +96,7 @@
               <?php echo link_to(__('Become an affiliate'), 'affiliate_new') ?>
             </li>
           </ul>
-          <?php include_component('sfJobeetLanguage', 'language') ?> // first argumen
-          <!-- updated includecomponnet -->
+
           <?php include_component('sfJobeetLanguage','language') ?>
         </div>
       </div>
