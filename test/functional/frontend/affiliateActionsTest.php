@@ -16,7 +16,7 @@ $browser->
   )))->
   with('response')->isRedirected()->
   followRedirect()->
-  with('response')->checkElement('#content h1', 'Your affiliate account has been created')->
+  with('response')->checkElement('#content h1', 'Your Affiliate account has been created')->
  
   info('2 - An affiliate must at least select one category')->
  
