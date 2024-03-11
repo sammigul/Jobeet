@@ -56,3 +56,7 @@ homepage:
   url:   /
   param: { module: job, action: index }
 
+change_language:
+  url:   /change_language
+  param: { module: language, action: changeLanguage }
+
