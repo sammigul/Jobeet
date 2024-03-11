@@ -11,4 +11,19 @@ class JobeetCategoryTable extends Doctrine_Table
       $q->andWhere('j.is_activated = ?', 1);
       return $q->execute();
     }
+
+    /**
+     * Returns a category based on its slug
+     * @param string $slug
+     * @return JobeetCategory
+     */
+
+    public function findOneBySlug($slug)
+    {
+      $q = $this->createQuery('a')
+        ->leftJoin('a.Translation t')
+        ->andWhere('t.lang = ?', 'en')
+        ->andWhere('t.slug = ?', $slug);
+      return $q->fetchOne();
+    }
 }
