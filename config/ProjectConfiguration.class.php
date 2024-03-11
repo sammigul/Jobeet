@@ -28,5 +28,7 @@ class ProjectConfiguration extends sfProjectConfiguration
       'sfDoctrineGuardPlugin',
       'sfFormExtraPlugin'
     ));
+
+    // sfFormExtraPlugin is located at lib/vendor/symfony/lib/plugins/sfFormExtraPlugin 
   }
 }
